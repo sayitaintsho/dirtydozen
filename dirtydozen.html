@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+	</head>
+	<body>
+		<h1>Dirty Dozen Checker</h1>
+		 <h3>Check your cosmetics for problem ingredients</h3>
+		<br>
+		<FORM METHOD=POST>
+
+        cut and paste ingredient list here:<BR>
+        <TEXTAREA id="txt" NAME="comments" COLS=40 ROWS=6></TEXTAREA>
+
+        <P><INPUT TYPE="button" value="Check" onclick="check();">
+        </FORM>
+
+        <script type="text/javascript">
+        var uInput;
+		var ingredients = ["BHA", "BHT", "p-phenylenediamine", "CI 42090","Blue 1","FD&C Blue No. 1","DEA","MEA",
+		"TEA","dibutyl phthalate","DMDM hydantoin","diazolidinyl urea","imidazolidinyl urea" ,"methenamine","quarternium-15",
+		"paraben","parfum","fragrance","PEG","eth","petrolatum","siloxane","methicone","sodium laureth sulfate","triclosan"];		
+		var check = function() { 
+			var matched = [];
+   			uInput = document.getElementById("txt").value;
+   			console.log(uInput);
+
+   			for ( var i = 0; i < ingredients.length; i++ ) {
+   				var ingredient = ingredients[i];
+
+   				// Check against user input
+   				var found = uInput.indexOf(ingredient)
+				if(found >= 0) {
+					matched.push(ingredient)
+				}
+				
+			}
+
+			if (matched.length > 0) {
+				alert("Match found: " + matched.join(', '));
+			}
+			else {
+				alert("All clear");
+			}
+		};
+		</script>
+
+	</body>
+</html>
+
